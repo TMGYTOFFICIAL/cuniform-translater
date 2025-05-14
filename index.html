@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuneiform Translator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+      padding: 40px;
+    }
+    textarea {
+      width: 80%;
+      height: 100px;
+      margin: 20px 0;
+      font-size: 18px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    #output {
+      margin-top: 30px;
+      font-size: 24px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cuneiform Translator</h1>
+  <textarea id="input" placeholder="Type your message here..."></textarea><br />
+  <button id="translateBtn">Translate</button>
+  <div id="output"></div>
+
+  <script>
+    const alphabet = {
+      A: "𒀀", B: "𒁀", C: "𒍝", D: "𒁲", E: "𒂊", F: "𒉿", G: "𒂵",
+      H: "𒄭", I: "𒄿", J: "𒊕", K: "𒆠", L: "𒇻", M: "𒈬", N: "𒉈",
+      O: "𒌨", P: "𒉺", Q: "𒋡", R: "𒊏", S: "𒊍", T: "𒋾", U: "𒌋",
+      V: "𒅅", W: "𒉿", X: "𒍑", Y: "𒉏", Z: "𒍣"
+    };
+
+    function translateText() {
+      const input = document.getElementById("input").value.toUpperCase();
+      let output = "";
+      for (let char of input) {
+        if (alphabet[char]) {
+          output += alphabet[char];
+        } else {
+          output += char;
+        }
+      }
+      document.getElementById("output").textContent = output;
+    }
+
+    document.getElementById("translateBtn").addEventListener("click", translateText);
+  </script>
+</body>
+</html>
